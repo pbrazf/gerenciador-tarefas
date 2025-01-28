@@ -1,7 +1,9 @@
 **Sobre o Projeto**
+
 Este projeto é um Gerenciador de Tarefas simples, criado com o objetivo de oferecer uma interface gráfica para organizar tarefas. Ele utiliza Python com Tkinter para a interface gráfica e SQLite como banco de dados para persistência dos dados.
 
 **Funcionalidades**
+
 O Gerenciador de Tarefas permite:
 - Adicionar Tarefas: Criar novas tarefas na lista.
 - Exibir Tarefas: Listar todas as tarefas, exibindo a situação (feito ou pendente).
@@ -9,6 +11,7 @@ O Gerenciador de Tarefas permite:
 - Deletar Tarefas: Remover tarefas da lista.
 
 **Arquitetura do Projeto**
+
 O projeto está dividido em três arquivos principais:
 
 - storage.py:
@@ -27,11 +30,13 @@ O projeto está dividido em três arquivos principais:
   Permite ao usuário interagir com as tarefas por meio de botões, checkboxes e campos de entrada.
 
 **Como Rodar o Projeto**
+
 Pré-requisitos
   Python 3.10+
   Nenhuma biblioteca adicional é necessária, já que o projeto utiliza somente bibliotecas padrão do Python.
 
 **Estrutura do Banco de Dados**
+
   A tabela Tarefas possui os seguintes campos:
     id: Identificador único da tarefa (chave primária).
     titulo: Título da tarefa (até 100 caracteres).
@@ -39,6 +44,7 @@ Pré-requisitos
     data_inserido: Data de criação da tarefa (preenchida automaticamente).
 
 **Melhorias Futuras**
+
   Adicionar suporte a categorias para as tarefas.
   Permitir a edição do título das tarefas diretamente pela interface gráfica.
   Adicionar uma funcionalidade de pesquisa.
