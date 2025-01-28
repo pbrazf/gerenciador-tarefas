@@ -39,10 +39,8 @@ class Database:
         try:
             self.cur.execute(query, (titulo, ))
             self.conn.commit()
-            print("{'status': 200, 'message': 'Tarefa adicionada com sucesso!'}")
             return {'status': 200, 'message': 'Tarefa adicionada com sucesso!'}
         except sqlite3.Error as e:
-            print(f"{'status': 500, 'message': f'Erro ao adicionar tarefa: {e}'}")
             return {'status': 500, 'message': f'Erro ao adicionar tarefa: {e}'}
 
     # Função para MOSTRAR tarefas
@@ -60,7 +58,7 @@ class Database:
         except sqlite3.Error as e:
             return {'status': 500, 'message': f'Erro ao adicionar tarefa: {e}'}
 
-    # Função para ATUALIZAR tarefas
+    # Função para ATUALIZAR tarefas (Por enquanto só vai atualizar o título e a situação da tarefa)
     def update_task(self, tarefa_id, **fields): # **fiels permite passar uma quantidade indefinida de parâmetros
         # Monta o pack de updates
         updates = ', '.join(f'{key} = ?' for key in fields)
@@ -77,7 +75,7 @@ class Database:
         except sqlite3.Error as e:
             return {'status': 500, 'message': f'Erro ao atualizar tarefa: {e}'}
 
-    # Função para marcar tarefa como FEITO (T) /NÃO FEITO (F)
+    # Função para marcar tarefa como FEITO (T) /NÃO FEITO (F) -> reutilizando a função update_task
     def mark_as_done(self, tarefa_id, feito='T'):
         return self.update_task(tarefa_id, feito=feito)
 
