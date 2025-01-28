@@ -1,4 +1,5 @@
 import sqlite3
+from config import DATABASE_CONFIG
 
 '''
 A ideia é desenvolver um CRUD completo:
@@ -10,7 +11,7 @@ A ideia é desenvolver um CRUD completo:
 
 # Criando uma classe para manipulação do banco de dados
 class Database:
-    def __init__(self, db_name='_banco.db'):
+    def __init__(self, db_name=DATABASE_CONFIG['db_name']):
         self.conn = sqlite3.connect(db_name)
         self.cur = self.conn.cursor()
         self.create_table()

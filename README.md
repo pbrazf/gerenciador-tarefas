@@ -12,22 +12,22 @@ O Gerenciador de Tarefas permite:
 
 **Arquitetura do Projeto**
 
-O projeto está dividido em três arquivos principais:
+gerenciador_tarefas/
+├── app.py         # Ponto de entrada
+├── config.py      # Configurações gerais
+├── models/
+│   └── storage.py # Manipulação do banco de dados
+├── controllers/
+│   └── task.py    # Lógica de negócios
+├── views/
+│   └── gui.py     # Interface gráfica
 
-- storage.py:
-  Implementa uma classe Database para manipulação do banco de dados SQLite.
-  Funções CRUD:
-    insert_task: Insere uma nova tarefa.
-    get_task: Recupera tarefas (com filtro de situação: feita ou não).
-    update_task: Atualiza campos de uma tarefa.
-    delete_task: Remove uma tarefa do banco.
-
-- task.py:
-  Implementa a classe TaskManager, que abstrai a comunicação com o banco de dados para facilitar a integração com a interface gráfica.
-
-- app.py:
-  Implementa a interface gráfica utilizando Tkinter.
-  Permite ao usuário interagir com as tarefas por meio de botões, checkboxes e campos de entrada.
+Estrutura: 
+- app.py: Arquivo principal que inicializa a aplicação.
+- config.py: Centraliza as configurações do projeto, como informações do banco de dados e ajustes da interface gráfica.
+- models/storage.py: Responsável pela manipulação direta do banco de dados SQLite.
+- controllers/task.py: Contém a lógica de negócios e faz a ponte entre a interface gráfica e o banco de dados.
+- views/gui.py: Gerencia os elementos visuais e interações com o usuário.
 
 **Como Rodar o Projeto**
 
