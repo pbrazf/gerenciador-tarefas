@@ -11,17 +11,17 @@ O Gerenciador de Tarefas permite:
 - Deletar Tarefas: Remover tarefas da lista.
 
 **Arquitetura do Projeto**
-
+```
 gerenciador_tarefas/
-├── app.py         # Ponto de entrada
-├── config.py      # Configurações gerais
-├── models/
-│   └── storage.py # Manipulação do banco de dados
-├── controllers/
-│   └── task.py    # Lógica de negócios
-├── views/
-│   └── gui.py     # Interface gráfica
-
+├── app.py         # Ponto de entrada da aplicação
+├── config.py      # Configurações gerais (parâmetros da interface, conexões, etc.)
+├── models/        # Camada de dados
+│   └── storage.py # Manipulação do banco de dados (operações CRUD)
+├── controllers/   # Camada de lógica de negócios
+│   └── task.py    # Gerenciamento de tarefas (adicionar, atualizar, deletar)
+├── views/         # Camada de apresentação
+│   └── gui.py     # Interface gráfica com Tkinter
+```
 Estrutura: 
 - app.py: Arquivo principal que inicializa a aplicação.
 - config.py: Centraliza as configurações do projeto, como informações do banco de dados e ajustes da interface gráfica.
