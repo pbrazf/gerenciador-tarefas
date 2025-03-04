@@ -11,8 +11,8 @@ class TaskManager:
             return {'status': 400, 'message': 'Título muito longo!'}
         return self.db.insert_task(title)
 
-    def get_tasks(self, status=('F', 'T')):
-        return self.db.get_task(status)
+    def get_tasks(self, status=('F', 'T'), ordenacao = 'data_inserido'):
+        return self.db.get_task(status, ordenacao=ordenacao)
 
     def update_task(self, task_id, **fields):
         return self.db.update_task(task_id, **fields)
@@ -22,6 +22,9 @@ class TaskManager:
 
     def delete_task(self, task_id):
         return self.db.delete_task(task_id)
-
+    
+    def delete_all_tasks(self):
+        return self.db.delete_all_tasks()
+    
     def close_connection(self):
         self.db.close()

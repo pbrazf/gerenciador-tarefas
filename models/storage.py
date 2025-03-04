@@ -45,13 +45,13 @@ class Database:
             return {'status': 500, 'message': f'Erro ao adicionar tarefa: {e}'}
 
     # Função para MOSTRAR tarefas
-    def get_task(self, situacao_tarefa=('F', 'T')):
+    def get_task(self, situacao_tarefa=('F', 'T'), ordenacao = 'data_inserido'):
         # Cria os placeholders
         placeholders = ', '.join('?' * len(situacao_tarefa))
         # Monta query
         query = f'''
         SELECT * FROM Tarefas WHERE feito IN ({placeholders}) 
-        ORDER BY data_inserido
+        ORDER BY {ordenacao} 
         '''
         try:
             self.cur.execute(query, situacao_tarefa)
@@ -89,6 +89,18 @@ class Database:
         '''
         try:    
             self.cur.execute(query, (id_tarefa,))
+            self.conn.commit()   
+            return {'status': 200, 'message': 'Sucesso ao deletar tarefa!'}
+        except sqlite3.Error as e:
+            return {'status': 500, 'message': f'Erro ao deletar tarefa: {e}'}
+    
+    def delete_all_tasks(self):
+        # Monta a query
+        query = '''
+        DELETE FROM Tarefas
+        '''
+        try:    
+            self.cur.execute(query)
             self.conn.commit()   
             return {'status': 200, 'message': 'Sucesso ao deletar tarefa!'}
         except sqlite3.Error as e:
