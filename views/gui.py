@@ -120,7 +120,7 @@ class Gerenciador:
         if tasks['data']:
             for i, task in enumerate(tasks['data']):
                 task_id = task[0]
-                task_title = task[1].capitalize()
+                task_title = task[1].replace(task[1][0], task[1][0].upper(), 1) # Deixa somente a primeira letra em upper mantendo o resto da str
                 task_done = task[2] == 'T'
 
                 # Criar o checkbox, label e botão de delete para cada tarefa
