@@ -14,9 +14,9 @@ class Gerenciador:
         self.campo_entrada = None
         self.task_vars = {}  # Dicionário para armazenar as variáveis dos checkboxes
         self.opcoes_ordenacao = [
-            {"sql": "data_inserido", "label": "Inserção"},
-            {"sql": "feito", "label": "Pendente"},
-            {"sql": "feito DESC", "label": "Feito"},
+            {'sql': 'data_inserido', 'label': 'Inserção'},
+            {'sql': 'feito', 'label': 'Pendente'},
+            {'sql': 'feito DESC', 'label': 'Feito'},
         ]
         self.ordenacao_iter = itertools.cycle(self.opcoes_ordenacao)
         self.ordenacao_atual = next(self.ordenacao_iter)  # Inicia na primeira opção
@@ -31,7 +31,7 @@ class Gerenciador:
         btn.grid(column=column, row=row, padx=5, pady=5)
 
         # Adiciona os eventos de mudança de cor ao passar o mouse
-        btn.bind('<Enter>', lambda event: btn.config(fg="blue"))  # Cor azul no hover
+        btn.bind('<Enter>', lambda event: btn.config(fg='blue'))  # Cor azul no hover
         btn.bind('<Leave>', lambda event: btn.config(fg=text_color))  # Retorna à cor original
         return btn
 
@@ -116,11 +116,11 @@ class Gerenciador:
         self.btn_new_task()
 
         # Atualiza a exibição das tarefas (linhas a partir de 1)
-        tasks = self.controlador.get_tasks(ordenacao=self.ordenacao_atual["sql"])
+        tasks = self.controlador.get_tasks(ordenacao=self.ordenacao_atual['sql'])
         if tasks['data']:
             for i, task in enumerate(tasks['data']):
                 task_id = task[0]
-                task_title = task[1].lower().capitalize()
+                task_title = task[1].capitalize()
                 task_done = task[2] == 'T'
 
                 # Criar o checkbox, label e botão de delete para cada tarefa
@@ -165,7 +165,7 @@ class Gerenciador:
         self.controlador.mark_as_done(task_id, done_flag)
         print(f'Tarefa {task_id} atualizada para {'Concluída' if done else 'Pendente'}')
 
-        # Mostra o label atualizado
+        # Mostra o status das tarefas atualizado 
         self.label_informacoes()
 
     def add_task(self):
